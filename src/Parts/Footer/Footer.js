@@ -1,10 +1,10 @@
 import React from "react";
-
+import Card from "react-bootstrap/Card";
 const Footer = () => {
   return (
-    <div>
-      <h2>Footer</h2>
-    </div>
+    <Card className="text-center">
+      <Card.Body>Copyright-2022 by skill-dev</Card.Body>
+    </Card>
   );
 };
 

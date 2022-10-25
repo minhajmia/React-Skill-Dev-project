@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <div>
+    <div className="px-5">
       <RouterProvider router={router}></RouterProvider>
       <Toaster />
     </div>

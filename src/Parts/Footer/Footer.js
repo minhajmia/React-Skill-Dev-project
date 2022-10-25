@@ -1,10 +1,10 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
+
 const Footer = () => {
   return (
-    <Card className="text-center">
-      <Card.Body>Copyright-2022 by skill-dev</Card.Body>
-    </Card>
+    <div className="navbar bg-base-100 text-center">
+      <p className="text-center">Copyright & 2022</p>
+    </div>
   );
 };
 

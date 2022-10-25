@@ -1,0 +1,9 @@
+.menu  a{
+    padding: 5px 15px;
+    color: rgb(16, 16, 16);
+    transition: all 0.3s;
+}
+.menu  a:hover{
+    border-left: 5px solid #64748b;
+    background-color: #f8fafc;
+}

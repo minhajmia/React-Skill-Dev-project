@@ -1,24 +1,28 @@
 import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import SingleCourse from "./../SingleCourse/SingleCourse";
+import "./Courses.css";
 
 const Courses = () => {
   const courses = useLoaderData();
   return (
-    <div className="grid md:grid-cols-3 mt-5">
-      <div className="md:col-span-1">
-        <h3 className=" font-bold text-2xl mb-5">Category</h3>
-        <ul className="menu bg-base-500  rounded-box">
-          {courses.map((course) => (
-            <Link key={course._id} to={`/course/${course._id}`}>
+    <div className="grid md:grid-cols-3 mt-10 px-5">
+      <div className="md:col-span-1 mr-5">
+        <div>
+          <h4 className="mb-5 font-semibold">Categories :</h4>
+        </div>
+        <ul className={`menu bg-base-500  rounded-box `}>
+          {courses.map((course, ind) => (
+            <NavLink key={course._id} to={`/course/${course._id}`}>
               {" "}
-              <li className="bordered ">{course.name}</li>
-            </Link>
+              <li className="bordered ">
+                ({ind + 1}) {course.name}
+              </li>
+            </NavLink>
           ))}
         </ul>
       </div>
-      <div className="col-span-2 ">
-        <h3 className="text-center font-bold text-2xl">All Courses</h3>
+      <div className="col-span-2 mx-5 ">
         <div className="grid md:grid-cols-2 gap-5">
           {courses.map((course) => (
             <SingleCourse course={course} key={course._id} />

@@ -29,7 +29,7 @@ const Header = () => {
         </Link>
       </div>
       <div
-        className={`md:flex  items-center absolute md:static duration-500 ease-out w-full bg-slate-50 px-[-5px] text-center  md:w-auto ${
+        className={`md:flex  items-center absolute md:static duration-500 ease-out w-full bg-slate-50 px-[-5px] text-center  md:w-auto z-[100] ${
           toggle ? "top-21" : "top-[-250px]"
         }`}
       >
@@ -47,7 +47,7 @@ const Header = () => {
             <li>
               <Link>
                 {" "}
-                <MoonIcon className="w-6 h-6 inline text-slate-500" />
+                <MoonIcon className="w-6 h-6 inline text-slate-400" />
               </Link>
             </li>
             <li>

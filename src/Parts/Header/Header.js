@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/Images/logo.png";
 import { Bars3Icon, MoonIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import "./Header.css";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [toggle, setToggle] = useState(false);
   const handleClick = () => {
     setToggle(!toggle);
   };
-  console.log(toggle);
+  // logOut
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="md:flex justify-between items-center gap-5 bg-slate-50 px-5 text-center  w-full">
       <div className="md:hidden " onClick={() => handleClick(!toggle)}>
@@ -50,16 +59,46 @@ const Header = () => {
                 <MoonIcon className="w-6 h-6 inline text-slate-400" />
               </Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
+            {user?.uid ? (
+              <>
+                <li>
+                  <Link
+                    className="py-1 px-4 rounded-md bg-slate-400"
+                    onClick={handleLogOut}
+                  >
+                    LogOut
+                  </Link>
+                </li>
+                <div className={`user hover:${user?.displayName}`}>
+                  <img
+                    style={{ height: "50px" }}
+                    className={`rounded-full  `}
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    className="py-1 px-4 rounded-md bg-slate-400"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="py-1 px-4 rounded-md bg-slate-400"
+                    to="/register"
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
-        </div>
-        <div className="user">
-          <h3>User</h3>
         </div>
       </div>
     </div>

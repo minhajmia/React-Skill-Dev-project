@@ -6,7 +6,7 @@ import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 const SingleCourse = ({ course }) => {
   const { name, details, picture, price } = course;
   return (
-    <div className="card  bg-slate-50 shadow-xl rounded-md">
+    <div className="card  bg-slate-50 shadow-xl rounded-md mb-5">
       <figure className="p-2">
         <img src={picture} alt="photo" className="rounded-md" />
       </figure>
@@ -20,7 +20,7 @@ const SingleCourse = ({ course }) => {
         </p>
         <div className="card-actions pb-2 ">
           <Link to={`/course/${course._id}`}>
-            <button className=" bg-slate-300  px-5 rounded-md flex ">
+            <button className=" bg-slate-500 text-white  px-5 rounded-md flex ">
               See Details
               <ArrowLongRightIcon className="w-6 h-7 " />{" "}
             </button>

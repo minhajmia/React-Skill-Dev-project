@@ -7,6 +7,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 const Register = () => {
   const [check, setCheck] = useState(false);
   const [accept, setAccept] = useState(false);
+  const [error, setError] = useState("");
   const { googleSignIn, register, githubSignIn, updateUserProfile } =
     useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
@@ -17,11 +18,12 @@ const Register = () => {
     googleSignIn(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        setError("");
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        const message = error.message;
+        setError(message);
       });
   };
   // githubSignIn
@@ -29,11 +31,13 @@ const Register = () => {
     githubSignIn(githubProvider)
       .then((result) => {
         const user = result.user;
+        setError("");
         navigate("/");
         console.log(user);
       })
       .catch((error) => {
-        console.log(error);
+        const message = error.message;
+        setError(message);
       });
   };
   const handleSubmit = (e) => {
@@ -47,14 +51,14 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         form.reset();
-        navigate("/");
+        setError("");
         userUpdateProfileInfo(name, photoURL);
-        console.log(user);
+        navigate("/");
       })
       .catch((error) => {
-        console.error(error);
+        const message = error.message;
+        setError(message);
       });
-    console.log(name, photoURL, email, password);
   };
   //  update user
   const userUpdateProfileInfo = (name, photoURL) => {
@@ -62,7 +66,8 @@ const Register = () => {
     updateUserProfile(info)
       .then(() => {})
       .catch((err) => {
-        console.error(err);
+        const message = err.message;
+        setError(message);
       });
   };
   // show password
@@ -123,6 +128,9 @@ const Register = () => {
               className="input input-bordered"
               required
             />
+            <p className="text-red-500">
+              <small>{error}</small>
+            </p>
             <div className="form-control">
               <label className="cursor-pointer label">
                 <input

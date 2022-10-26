@@ -7,6 +7,7 @@ import Login from "../../Pages/Login/Login";
 import NotFound from "../../Pages/NotFound/NotFound";
 import Register from "../../Pages/Register/Register";
 import TermsAndCondition from "../../Pages/TermsAndCondition/TermsAndCondition";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Home from "./../../Pages/Home/Home";
 
 export const router = createBrowserRouter([
@@ -14,8 +15,16 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Main />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "home", element: <Home /> },
+      {
+        path: "/",
+        element: <Home />,
+        loader: () => fetch(`http://localhost:5000/courses`),
+      },
+      {
+        path: "home",
+        element: <Home />,
+        loader: () => fetch(`http://localhost:5000/courses`),
+      },
       {
         path: "courses",
         element: <Courses />,
@@ -29,7 +38,16 @@ export const router = createBrowserRouter([
       },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
-      { path: "checkout", element: <CheckOut /> },
+      {
+        path: "checkout/:id",
+        element: (
+          <PrivateRoute>
+            <CheckOut />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/courses/${params.id}`),
+      },
       { path: "terms", element: <TermsAndCondition /> },
       { path: "*", element: <NotFound /> },
     ],

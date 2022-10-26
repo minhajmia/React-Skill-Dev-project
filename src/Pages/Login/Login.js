@@ -1,24 +1,26 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const [check, setCheck] = useState(false);
+  const [error, setError] = useState("");
   const { login, googleSignIn, githubSignIn } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
   const handleGoogleSignIn = () => {
     googleSignIn(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        navigate("/");
+        setError("");
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       });
   };
   // githubSignIn
@@ -26,11 +28,10 @@ const Login = () => {
     githubSignIn(githubProvider)
       .then((result) => {
         const user = result.user;
-        navigate("/");
-        console.log(user);
+        setError("");
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       });
   };
   const handleSubmit = (e) => {
@@ -42,13 +43,11 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         form.reset();
-        navigate("/");
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((err) => {
-        console.error(err);
+        setError(err.message);
       });
-    console.log(email, password);
   };
   // show password
   const handleShowPass = (e) => {
@@ -81,6 +80,9 @@ const Login = () => {
               className="input input-bordered"
               required
             />
+            <p className="text-red-500">
+              <small>{error}</small>
+            </p>
             <div className="form-control">
               <label className="cursor-pointer label">
                 <input

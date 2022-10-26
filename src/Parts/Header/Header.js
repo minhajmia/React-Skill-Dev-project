@@ -43,7 +43,10 @@ const Header = () => {
         }`}
       >
         <div>
-          <ul className="md:flex justify-between items-center nav-items ">
+          <ul className="md:flex justify-between items-center nav-items py-5 md:py-0">
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
             <li>
               <Link to="/courses">Courses</Link>
             </li>
@@ -56,14 +59,14 @@ const Header = () => {
             <li>
               <Link>
                 {" "}
-                <MoonIcon className="w-6 h-6 inline text-slate-400" />
+                <MoonIcon className="w-6 h-6 inline text-slate-400 mb-3 md:mb-0" />
               </Link>
             </li>
             {user?.uid ? (
               <>
-                <li>
+                <li className="mb-3 md:mb-0">
                   <Link
-                    className="py-1 px-4 rounded-md bg-slate-400"
+                    className="py-1 px-4 rounded-md bg-slate-400 "
                     onClick={handleLogOut}
                   >
                     LogOut
@@ -84,9 +87,9 @@ const Header = () => {
               </>
             ) : (
               <>
-                <li>
+                <li className="mb-4 md:mb-0">
                   <Link
-                    className="py-1 px-4 rounded-md bg-slate-400"
+                    className="py-1 px-4 rounded-md bg-slate-400 "
                     to="/login"
                   >
                     Login
@@ -94,7 +97,7 @@ const Header = () => {
                 </li>
                 <li>
                   <Link
-                    className="py-1 px-4 rounded-md bg-slate-400"
+                    className="py-1 px-4 rounded-md bg-slate-400 "
                     to="/register"
                   >
                     Register

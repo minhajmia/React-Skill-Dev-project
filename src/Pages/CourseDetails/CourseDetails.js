@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaHandPointRight } from "react-icons/fa";
+import Pdf from "react-to-pdf";
+const ref = React.createRef();
 
 const CourseDetails = () => {
   const course = useLoaderData();
@@ -17,7 +19,7 @@ const CourseDetails = () => {
     _id,
   } = course;
   return (
-    <>
+    <div ref={ref}>
       <div className="md:flex justify-between mt-3 md:mt-10 py-3 md:py-5 text-center md:px-5 items-center">
         <div className="course mx-5 mt-10 md:mt-0">
           <div className="card bg-slate-50 shadow-xl border-4">
@@ -42,11 +44,12 @@ const CourseDetails = () => {
               </p>
               <div className="card-actions justify-end">
                 <div className="badge bg-slate-400  ">
-                  <Link to={`/checkout/${_id}`}>Get to Premium</Link>{" "}
+                  <Link to={`/checkout/${_id}`}>Purchase</Link>{" "}
                 </div>
                 <div className="badge badge-outline">
-                  {" "}
-                  <Link>Download</Link>{" "}
+                  <Pdf targetRef={ref} filename="code-example.pdf">
+                    {({ toPdf }) => <button onClick={toPdf}>Download</button>}
+                  </Pdf>
                 </div>
               </div>
             </div>
@@ -86,7 +89,7 @@ const CourseDetails = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

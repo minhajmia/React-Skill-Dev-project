@@ -6,6 +6,7 @@ import Courses from "../../Pages/Courses/Courses";
 import Login from "../../Pages/Login/Login";
 import NotFound from "../../Pages/NotFound/NotFound";
 import Register from "../../Pages/Register/Register";
+import TermsAndCondition from "../../Pages/TermsAndCondition/TermsAndCondition";
 import Home from "./../../Pages/Home/Home";
 
 export const router = createBrowserRouter([
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "checkout", element: <CheckOut /> },
+      { path: "terms", element: <TermsAndCondition /> },
       { path: "*", element: <NotFound /> },
     ],
   },

@@ -1,12 +1,63 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+  const [check, setCheck] = useState(false);
+  const { login, googleSignIn, githubSignIn } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  const navigate = useNavigate();
+  const handleGoogleSignIn = () => {
+    googleSignIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  // githubSignIn
+  const handleGithubSignIn = () => {
+    githubSignIn(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        navigate("/");
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        form.reset();
+        navigate("/");
+        console.log(user);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    console.log(email, password);
+  };
+  // show password
+  const handleShowPass = (e) => {
+    setCheck(e.target.checked);
+  };
   return (
     <div className="hero mt-5 ">
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-slate-50">
-        <form className="card-body">
+        <form onSubmit={handleSubmit} className="card-body">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -24,7 +75,7 @@ const Login = () => {
               <span className="label-text">Password</span>
             </label>
             <input
-              type="password"
+              type={check ? "text" : "password"}
               placeholder="password"
               name="password"
               className="input input-bordered"
@@ -32,7 +83,11 @@ const Login = () => {
             />
             <div className="form-control">
               <label className="cursor-pointer label">
-                <input type="checkbox" className="checkbox checkbox-dark" />
+                <input
+                  type="checkbox"
+                  className="checkbox checkbox-dark"
+                  onClick={handleShowPass}
+                />
                 Show Password
               </label>
             </div>
@@ -50,10 +105,10 @@ const Login = () => {
           </div>
           <p className="text-center">-------- Or --------</p>
           <div className="flex justify-center  gap-5">
-            <button className="inline-block">
+            <button className="inline-block" onClick={handleGoogleSignIn}>
               <FaGoogle />
             </button>
-            <button className="inline-block">
+            <button className="inline-block" onClick={handleGithubSignIn}>
               <FaGithub />
             </button>
           </div>

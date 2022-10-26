@@ -71,8 +71,12 @@ const Header = () => {
                 </li>
                 <div className={`user hover:${user?.displayName}`}>
                   <img
-                    style={{ height: "50px" }}
-                    className={`rounded-full  `}
+                    style={{
+                      height: "50px",
+                      width: "50px",
+                      borderRadius: "50%",
+                    }}
+                    className={` inline-block  `}
                     src={user?.photoURL}
                     alt=""
                   />

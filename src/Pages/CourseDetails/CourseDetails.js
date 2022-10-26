@@ -18,48 +18,13 @@ const CourseDetails = () => {
   } = course;
   return (
     <>
-      <div className="md:flex justify-between mt-3 md:mt-10 py-3 md:py-5 text-center md:px-5">
-        <div className="course-info md:text-left mx-5">
-          <h3 className="text-2xl font-semibold">{name}</h3>
-          <p>{details}</p>
-          <p className="font-semibold mt-2">Requirement</p>
-          <ul className="inline-block">
-            <li className="flex items-center gap-4">
-              <FaHandPointRight className="text-slate-400" /> Laptop
-            </li>
-            <li className="flex items-center gap-4">
-              <FaHandPointRight className="text-slate-400" /> Computer
-            </li>
-            <li className="flex items-center gap-4">
-              <FaHandPointRight className="text-slate-400" /> Mobile
-            </li>
-          </ul>
-          <div>
-            <p className className="font-semibold mt-2">
-              Instructor
-            </p>
-            <div className="md:flex items-center gap-5">
-              {" "}
-              <div className=" mb-3 justify-center md:justify-start">
-                <div className="avatar mt-5">
-                  <div className="w-20 rounded-full ring ring-slate-400 ring-offset-base-400 ring-offset-2">
-                    <img src={instructor?.photo} />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <p>{instructor?.name}</p>
-                <p>{instructor?.publish_date}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="md:flex justify-between mt-3 md:mt-10 py-3 md:py-5 text-center md:px-5 items-center">
         <div className="course mx-5 mt-10 md:mt-0">
-          <div className="card bg-slate-50 shadow-xl">
+          <div className="card bg-slate-50 shadow-xl border-4">
             <figure>
               <img
                 src={picture}
-                className="rounded-md inline-block px-5"
+                className="rounded-md inline-block "
                 alt="Shoes"
               />
             </figure>
@@ -83,6 +48,39 @@ const CourseDetails = () => {
                   {" "}
                   <Link>Download</Link>{" "}
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="course-info md:text-left mx-5 mt-10 md:mt-0">
+          <h3 className="text-2xl font-semibold">{name}</h3>
+          <p>{details}</p>
+          <p className="font-semibold mt-2">Requirement</p>
+          <ul className="inline-block">
+            <li className="flex items-center gap-4">
+              <FaHandPointRight className="text-slate-400" /> Laptop
+            </li>
+            <li className="flex items-center gap-4">
+              <FaHandPointRight className="text-slate-400" /> Computer
+            </li>
+            <li className="flex items-center gap-4">
+              <FaHandPointRight className="text-slate-400" /> Mobile
+            </li>
+          </ul>
+          <div>
+            <p className="font-semibold mt-2">Instructor</p>
+            <div className="md:flex items-center gap-5">
+              {" "}
+              <div className=" mb-3 justify-center md:justify-start">
+                <div className="avatar mt-5">
+                  <div className="w-20 rounded-full ring ring-slate-400 ring-offset-base-400 ring-offset-2">
+                    <img src={instructor?.photo} />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p>{instructor?.name}</p>
+                <p>{instructor?.publish_date}</p>
               </div>
             </div>
           </div>

@@ -20,7 +20,7 @@ const Header = () => {
       });
   };
   return (
-    <div className="md:flex justify-between items-center gap-5 bg-slate-50 px-5 text-center  w-full">
+    <div className="md:flex justify-between items-center gap-5 bg-slate-50 px-5 text-center  w-full shadow-xl">
       <div className="md:hidden " onClick={() => handleClick(!toggle)}>
         {toggle ? (
           <XMarkIcon className="w-6 text-slate-500" />
@@ -43,7 +43,7 @@ const Header = () => {
         }`}
       >
         <div>
-          <ul className="md:flex justify-between items-center nav-items py-5 md:py-0">
+          <ul className="md:flex justify-between items-center nav-items py-3 md:py-0">
             <li>
               <Link to="/home">Home</Link>
             </li>
@@ -51,10 +51,10 @@ const Header = () => {
               <Link to="/courses">Courses</Link>
             </li>
             <li>
-              <Link to="/">FAQ</Link>
+              <Link to="/faq">FAQ</Link>
             </li>
             <li>
-              <Link to="/">Blog</Link>
+              <Link to="/blog">Blog</Link>
             </li>
             <li>
               <Link>

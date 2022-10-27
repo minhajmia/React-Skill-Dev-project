@@ -1,9 +1,12 @@
 import React from "react";
-
+import img from "../../Assets/Images/notFound.png";
 const NotFound = () => {
   return (
-    <div className="text-center">
-      <h1>404. Page Not Found</h1>
+    <div className="text-center ">
+      <img className="inline-block max-h-80 mt-20" src={img} alt="" />
+      <h1 className="align-middle md:text-3xl text-green-600 mt-3">
+        Page Not Found
+      </h1>
     </div>
   );
 };

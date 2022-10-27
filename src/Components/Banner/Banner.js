@@ -23,7 +23,7 @@ const Banner = () => {
         <div>
           <Link to="/courses">
             {" "}
-            <button className="btn bg-slate-500 border-0">All Course</button>
+            <button className="btn bg-slate-400 border-0">All Course</button>
           </Link>
         </div>
       </div>

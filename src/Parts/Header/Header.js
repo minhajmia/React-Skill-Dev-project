@@ -4,7 +4,7 @@ import logo from "../../Assets/Images/logo.png";
 import { Bars3Icon, MoonIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import "./Header.css";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
-import toast from "react-hot-toast";
+import { FaUserAlt } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);

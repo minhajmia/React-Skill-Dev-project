@@ -23,8 +23,9 @@ const CourseDetails = () => {
       <h2 className="text-center mt-6  md:text-3xl font-semibold">
         All About Course
       </h2>
+
       <div ref={ref}>
-        <div className="md:flex justify-between mt-3 md:mt-10 py-3 md:py-5 text-center md:px-5 items-center">
+        <div className="md:flex justify-between  md:mt-5 md:py-5 text-center md:px-5 items-center">
           <div className="course mx-5 mt-10 md:mt-0">
             <div className="card bg-slate-50 shadow-xl border-4">
               <figure>
@@ -37,7 +38,9 @@ const CourseDetails = () => {
               <div className="card-body">
                 <h2 className="card-title">
                   Total Views
-                  <div className="badge bg-slate-400">{total_views}</div>
+                  <div className="badge bg-slate-400 border-0">
+                    {total_views}
+                  </div>
                 </h2>
                 <p className="text-left">
                   <span className="font-semibold">Rating : </span>
@@ -47,15 +50,8 @@ const CourseDetails = () => {
                   <span className="font-semibold">Price : </span>${price}
                 </p>
                 <div className="card-actions justify-end">
-                  <div className="badge bg-slate-400  ">
+                  <div className="badge  bg-slate-400  border-0">
                     <Link to={`/checkout/${_id}`}>Purchase</Link>{" "}
-                  </div>
-                  <div className="badge badge-outline">
-                    <Pdf targetRef={ref} filename="code-example.pdf">
-                      {({ toPdf }) => (
-                        <button onClick={toPdf}>Download Pdf</button>
-                      )}
-                    </Pdf>
                   </div>
                 </div>
               </div>
@@ -95,6 +91,18 @@ const CourseDetails = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className=" text-center">
+        <Pdf targetRef={ref} filename="code-example.pdf">
+          {({ toPdf }) => (
+            <button
+              className="py-3 px-10 rounded-md bg-slate-400   text-white border-0 mt-5"
+              onClick={toPdf}
+            >
+              Download Pdf
+            </button>
+          )}
+        </Pdf>
       </div>
     </>
   );

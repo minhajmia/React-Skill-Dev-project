@@ -14,7 +14,7 @@ const CheckOut = () => {
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">{name}</h1>
           <p className="py-6">{details}</p>
-          <button onClick={handleThanks} className="btn bg-slate-500 border-0">
+          <button onClick={handleThanks} className="btn bg-slate-400  border-0">
             CheckOut
           </button>
         </div>

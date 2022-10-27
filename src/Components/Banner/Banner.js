@@ -9,11 +9,12 @@ const Banner = () => {
         <p className="mb-2">
           <small>Explore us</small>
         </p>
-        <h2 className="font-semibold text-3xl mb-3">
-          Learn New Skill With skill-dev
+        <h2 className="font-semibold text-3xl mb-3 text-orange-600">
+          Learn new skill with{" "}
+          <span className="text-slate-500 italic font-mono">Skill-Dev</span>
         </h2>
         <p className="mb-3 leading-7">
-          Skill-dev is online based Course platform Where we can learn new
+          Skill-Dev is online based Course platform Where we can learn new
           skills any time. Buy your favorite course and grow up yourself for the
           next generation. Here are a lot of different types of tutorials so
           that a new learner can choose his/ her course easily and learn
@@ -23,7 +24,7 @@ const Banner = () => {
         <div>
           <Link to="/courses">
             {" "}
-            <button className="btn bg-slate-400 border-0">All Course</button>
+            <button className="btn bg-slate-600 border-0">All Course</button>
           </Link>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const [check, setCheck] = useState(false);
@@ -18,6 +19,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setError("");
+        toast.success("Successfully Login!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -30,6 +32,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setError("");
+        toast.success("Successfully Login!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -45,6 +48,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         form.reset();
+        toast.success("Successfully Login!");
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -99,13 +103,15 @@ const Login = () => {
           <p>
             <small>
               Don't have an account?{" "}
-              <Link to="/register" className="text-green-600">
+              <Link to="/register" className="text-orange-600">
                 Register
               </Link>{" "}
             </small>
           </p>
           <div className="form-control mt-6">
-            <button className=" rounded-md bg-slate-400 py-2">Login</button>
+            <button className=" rounded-md bg-slate-600 py-2 text-white">
+              Login
+            </button>
           </div>
           <p className="text-center">-------- Or --------</p>
           <div className="flex justify-center  gap-5">

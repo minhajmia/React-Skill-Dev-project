@@ -7,13 +7,13 @@ const Courses = () => {
   const courses = useLoaderData();
   return (
     <>
-      <h2 className="text-center mt-6  md:text-3xl font-semibold">
+      <h2 className="text-center mt-6  md:text-3xl font-semibold text-orange-600">
         Explore Our Courses
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-5 md:mt-5 py-5 md:py-8 mx-1 md:px-5">
         <div className="md:col-span-1   mr-5 mb-8 md:mb-0">
           <div>
-            <h4 className="mb-5 font-semibold">Categories :</h4>
+            <h4 className="mb-5 font-semibold text-orange-600">Categories :</h4>
           </div>
           <ul className={`menu bg-base-500  rounded-box `}>
             {courses.map((course, ind) => (

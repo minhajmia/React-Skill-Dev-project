@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../Assets/Images/logo.png";
-import { Bars3Icon, MoonIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import "./Header.css";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
-import { FaUserAlt } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -24,9 +23,9 @@ const Header = () => {
     <div className="md:flex justify-between items-center gap-5 bg-slate-50 md:px-5 text-center  w-full shadow-xl ">
       <div className="md:hidden " onClick={() => handleClick(!toggle)}>
         {toggle ? (
-          <XMarkIcon className="w-6 text-slate-500" />
+          <XMarkIcon className="w-10 text-slate-500" />
         ) : (
-          <Bars3Icon className="w-6 text-slate-400" />
+          <Bars3Icon className="w-10 text-slate-400" />
         )}
       </div>
       <div>
@@ -88,7 +87,7 @@ const Header = () => {
                   </Link>
                 </li>
                 <div
-                  className="tooltip tooltip-left  tooltip-success"
+                  className="tooltip tooltip-left  tooltip-orange"
                   data-tip={user?.displayName}
                 >
                   <img

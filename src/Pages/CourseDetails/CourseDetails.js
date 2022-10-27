@@ -20,7 +20,7 @@ const CourseDetails = () => {
   } = course;
   return (
     <>
-      <h2 className="text-center mt-6  md:text-3xl font-semibold">
+      <h2 className="text-center mt-6  md:text-3xl font-semibold text-orange-600">
         All About Course
       </h2>
 
@@ -38,7 +38,7 @@ const CourseDetails = () => {
               <div className="card-body">
                 <h2 className="card-title">
                   Total Views
-                  <div className="badge bg-slate-400 border-0">
+                  <div className="badge bg-slate-600 border-0">
                     {total_views}
                   </div>
                 </h2>
@@ -50,7 +50,7 @@ const CourseDetails = () => {
                   <span className="font-semibold">Price : </span>${price}
                 </p>
                 <div className="card-actions justify-end">
-                  <div className="badge  bg-slate-400  border-0">
+                  <div className="badge  bg-slate-600  border-0">
                     <Link to={`/checkout/${_id}`}>Purchase</Link>{" "}
                   </div>
                 </div>
@@ -58,18 +58,20 @@ const CourseDetails = () => {
             </div>
           </div>
           <div className="course-info md:text-left mx-5 mt-10 md:mt-0">
-            <h3 className="text-2xl font-semibold mb-3">{name}</h3>
+            <h3 className="text-2xl font-semibold mb-3 text-orange-600">
+              {name}
+            </h3>
             <p>{details}</p>
             <p className="font-semibold mt-2">Requirement</p>
             <ul className="inline-block">
               <li className="flex items-center gap-4">
-                <FaHandPointRight className="text-slate-400" /> Laptop
+                <FaHandPointRight className="text-orange-600" /> Laptop
               </li>
               <li className="flex items-center gap-4">
-                <FaHandPointRight className="text-slate-400" /> Computer
+                <FaHandPointRight className="text-orange-600" /> Computer
               </li>
               <li className="flex items-center gap-4">
-                <FaHandPointRight className="text-slate-400" /> Mobile
+                <FaHandPointRight className="text-orange-600" /> Mobile
               </li>
             </ul>
             <div>
@@ -78,7 +80,7 @@ const CourseDetails = () => {
                 {" "}
                 <div className=" mb-3 justify-center md:justify-start">
                   <div className="avatar mt-5">
-                    <div className="w-20 rounded-full ring ring-slate-400 ring-offset-base-400 ring-offset-2">
+                    <div className="w-20 rounded-full ring ring-orange-600 ring-offset-base-400 ring-offset-2">
                       <img src={instructor?.photo} />
                     </div>
                   </div>
@@ -96,7 +98,7 @@ const CourseDetails = () => {
         <Pdf targetRef={ref} filename="code-example.pdf">
           {({ toPdf }) => (
             <button
-              className="py-3 px-10 rounded-md bg-slate-400   text-white border-0 mt-5"
+              className="py-3 px-10 rounded-md bg-slate-600   text-white border-0 mt-5"
               onClick={toPdf}
             >
               Download Pdf

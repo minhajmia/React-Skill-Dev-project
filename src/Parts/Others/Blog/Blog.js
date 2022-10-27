@@ -3,7 +3,9 @@ import React from "react";
 const Blog = () => {
   return (
     <div>
-      <h2 className="text-3xl text-center my-10">Question & Answer </h2>
+      <h2 className="text-3xl text-center my-10 text-orange-600">
+        Question & Answer{" "}
+      </h2>
       <div className="md:w-1/2	 mx-3 md:mx-auto ">
         <div
           tabIndex={0}

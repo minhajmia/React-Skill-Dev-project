@@ -3,7 +3,9 @@ import React from "react";
 const FAQ = () => {
   return (
     <div>
-      <h2 className="text-3xl text-center my-10">Frequently Asked Questions</h2>
+      <h2 className="text-3xl text-center my-10 text-orange-600">
+        Frequently Asked Questions
+      </h2>
       <div className="md:w-1/2	mx-3 md:mx-auto ">
         <div
           tabIndex={0}

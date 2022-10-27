@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
   const [check, setCheck] = useState(false);
@@ -21,6 +22,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setError("");
+        toast.success("Registration Completed!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -34,6 +36,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setError("");
+        toast.success("Registration Completed!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -55,6 +58,7 @@ const Register = () => {
         userUpdateProfileInfo(name, photoURL);
         setError("");
         form.reset();
+        toast.success("Registration Completed!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -106,6 +110,7 @@ const Register = () => {
               placeholder="PhotoURL"
               className="input input-bordered"
               name="photoURL"
+              required
             />
           </div>
           <div className="form-control">
@@ -164,7 +169,7 @@ const Register = () => {
           <p>
             <small>
               Already have a account?{" "}
-              <Link to="/login" className="text-green-600">
+              <Link to="/login" className="text-orange-600">
                 Login
               </Link>{" "}
             </small>
@@ -172,13 +177,16 @@ const Register = () => {
           <div className="form-control mt-6">
             {!accept ? (
               <>
-                <button className=" rounded-md bg-slate-200 py-2" disabled>
+                <button
+                  className=" rounded-md bg-slate-200 py-2 text-sky-50"
+                  disabled
+                >
                   Register
                 </button>
               </>
             ) : (
               <>
-                <button className=" rounded-md bg-slate-400 py-2">
+                <button className=" rounded-md bg-slate-600 py-2 text-white">
                   Register
                 </button>
               </>

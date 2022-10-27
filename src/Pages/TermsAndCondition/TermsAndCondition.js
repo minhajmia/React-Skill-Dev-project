@@ -12,7 +12,7 @@ const TermsAndCondition = () => {
           (1) This page (together with the documents referred to on it) sets out
           the terms and conditions (“Terms and Conditions”) on which you may
           make use of the Website (as defined below), whether as a guest or a
-          registered user. This Website is owned and operated by skill-dev
+          registered user. This Website is owned and operated by Skill-Dev
         </li>
         <li className="my-5">
           (2) Applicability of the Terms and Conditions: Your usage of the
@@ -39,9 +39,9 @@ const TermsAndCondition = () => {
           address.
         </li>
       </ul>
-      <p className="text-center my-5">
+      <p className="text-center my-5 text-2xl">
         Go to Register:{" "}
-        <Link to="/register" className="underline text-green-600">
+        <Link to="/register" className="underline text-orange-600">
           Register
         </Link>{" "}
       </p>

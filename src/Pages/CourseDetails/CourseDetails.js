@@ -48,7 +48,9 @@ const CourseDetails = () => {
                 </div>
                 <div className="badge badge-outline">
                   <Pdf targetRef={ref} filename="code-example.pdf">
-                    {({ toPdf }) => <button onClick={toPdf}>Download</button>}
+                    {({ toPdf }) => (
+                      <button onClick={toPdf}>Download Pdf</button>
+                    )}
                   </Pdf>
                 </div>
               </div>

@@ -54,7 +54,7 @@ const Login = () => {
     setCheck(e.target.checked);
   };
   return (
-    <div className="hero mt-5 ">
+    <div className="hero mt-5 px-5">
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-slate-50">
         <form onSubmit={handleSubmit} className="card-body">
           <div className="form-control">
@@ -97,7 +97,7 @@ const Login = () => {
           <p>
             <small>
               Don't have an account?{" "}
-              <Link to="/register" className="text-blue-700">
+              <Link to="/register" className="text-green-600">
                 Register
               </Link>{" "}
             </small>

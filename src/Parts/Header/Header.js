@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logo from "../../Assets/Images/logo.png";
 import { Bars3Icon, MoonIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import "./Header.css";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -20,7 +21,7 @@ const Header = () => {
       });
   };
   return (
-    <div className="md:flex justify-between items-center gap-5 bg-slate-50 px-5 text-center  w-full shadow-xl">
+    <div className="md:flex justify-between items-center gap-5 bg-slate-50 md:px-5 text-center  w-full shadow-xl ">
       <div className="md:hidden " onClick={() => handleClick(!toggle)}>
         {toggle ? (
           <XMarkIcon className="w-6 text-slate-500" />
@@ -39,22 +40,26 @@ const Header = () => {
       </div>
       <div
         className={`md:flex  items-center absolute md:static duration-500 ease-out w-full bg-slate-50 px-[-5px] text-center  md:w-auto z-[100] ${
-          toggle ? "top-21" : "top-[-250px]"
+          toggle ? "top-21" : "top-[-285px]"
         }`}
       >
         <div>
-          <ul className="md:flex justify-between items-center nav-items py-3 md:py-0">
+          <ul
+            className={`md:flex justify-between items-center nav-items py-3  md:py-0 ${(
+              isActive
+            ) => (isActive ? " active" : "undefined")}`}
+          >
             <li>
-              <Link to="/home">Home</Link>
+              <NavLink to="/home">Home</NavLink>
             </li>
             <li>
-              <Link to="/courses">Courses</Link>
+              <NavLink to="/courses">Courses</NavLink>
             </li>
             <li>
-              <Link to="/faq">FAQ</Link>
+              <NavLink to="/faq">FAQ</NavLink>
             </li>
             <li>
-              <Link to="/blog">Blog</Link>
+              <NavLink to="/blog">Blog</NavLink>
             </li>
             <li>
               <label className="swap swap-rotate">
@@ -78,10 +83,7 @@ const Header = () => {
             {user?.uid ? (
               <>
                 <li className="mb-3 md:mb-0">
-                  <Link
-                    className="py-1 px-4 rounded-md bg-slate-400 "
-                    onClick={handleLogOut}
-                  >
+                  <Link className=" " onClick={handleLogOut}>
                     LogOut
                   </Link>
                 </li>
@@ -102,20 +104,14 @@ const Header = () => {
             ) : (
               <>
                 <li className="mb-4 md:mb-0">
-                  <Link
-                    className="py-1 px-4 rounded-md bg-slate-400 "
-                    to="/login"
-                  >
+                  <NavLink className=" " to="/login">
                     Login
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
-                    className="py-1 px-4 rounded-md bg-slate-400 "
-                    to="/register"
-                  >
+                  <NavLink className="" to="/register">
                     Register
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}

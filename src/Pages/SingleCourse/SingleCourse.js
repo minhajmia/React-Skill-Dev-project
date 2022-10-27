@@ -6,15 +6,13 @@ import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 const SingleCourse = ({ course }) => {
   const { name, details, picture, price } = course;
   return (
-    <div className="card  bg-slate-50 shadow-xl rounded-md mb-5">
-      <figure className="p-2">
+    <div className="card  bg-slate-50 shadow-2xl rounded-lg mb-5">
+      <figure className="">
         <img src={picture} alt="photo" className="rounded-md" />
       </figure>
       <div className="card-body py-0 px-2">
         <h2 className="card-title">{name}</h2>
-        <p className="card-details">
-          If a dog chews shoes whose shoes does he choose?
-        </p>
+        <p className="card-details">{details}</p>
         <p className="p-0 m-0">
           <span className="font-semibold">Price :</span>${price}
         </p>

@@ -5,9 +5,8 @@ import SingleCourse from "../SingleCourse/SingleCourse";
 
 const Home = () => {
   const allCourse = useLoaderData();
-  console.log(allCourse);
   return (
-    <div className=" px-2 md:px-5">
+    <div className=" px-2 md:px-5 ">
       <div className="banner">
         <Banner />
       </div>
@@ -15,7 +14,7 @@ const Home = () => {
         <h2 className="my-10 py-5 text-center text-3xl font-bold">
           Explore Featured Courses
         </h2>
-        <div className="md:grid grid-cols-3 gap-10">
+        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {allCourse?.map((course) => (
             <SingleCourse key={course._id} course={course}></SingleCourse>
           ))}

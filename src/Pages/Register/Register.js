@@ -80,7 +80,7 @@ const Register = () => {
   };
 
   return (
-    <div className="hero mt-5 ">
+    <div className="hero mt-5 px-5">
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-slate-50 ">
         <form onSubmit={handleSubmit} className="card-body">
           <div className="form-control">
@@ -162,7 +162,7 @@ const Register = () => {
           <p>
             <small>
               Already have a account?{" "}
-              <Link to="/login" className="text-blue-700">
+              <Link to="/login" className="text-green-600">
                 Login
               </Link>{" "}
             </small>
@@ -170,7 +170,7 @@ const Register = () => {
           <div className="form-control mt-6">
             {!accept ? (
               <>
-                <button className=" rounded-md bg-slate-400 py-2" disabled>
+                <button className=" rounded-md bg-slate-200 py-2" disabled>
                   Register
                 </button>
               </>

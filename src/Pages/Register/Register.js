@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
@@ -12,6 +12,8 @@ const Register = () => {
     useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
   // google signin
   const handleGoogleSignIn = () => {
@@ -19,7 +21,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setError("");
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const message = error.message;
@@ -32,8 +34,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setError("");
-        navigate("/");
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const message = error.message;
@@ -47,13 +48,14 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(name, photoURL);
     register(email, password)
       .then((result) => {
         const user = result.user;
-        form.reset();
-        setError("");
         userUpdateProfileInfo(name, photoURL);
-        navigate("/");
+        setError("");
+        form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const message = error.message;
@@ -62,8 +64,8 @@ const Register = () => {
   };
   //  update user
   const userUpdateProfileInfo = (name, photoURL) => {
-    const info = { name, photoURL };
-    updateUserProfile(info)
+    const profile = { displayName: name, photoURL: photoURL };
+    updateUserProfile(profile)
       .then(() => {})
       .catch((err) => {
         const message = err.message;
@@ -85,11 +87,11 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="card-body">
           <div className="form-control">
             <label className="label">
-              <span className="label-text"> Name</span>
+              <span className="label-text">Full Name</span>
             </label>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Full Name"
               className="input input-bordered"
               name="name"
               required

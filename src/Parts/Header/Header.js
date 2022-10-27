@@ -87,7 +87,10 @@ const Header = () => {
                     LogOut
                   </Link>
                 </li>
-                <div className={`user hover:${user?.displayName}`}>
+                <div
+                  className="tooltip tooltip-left  tooltip-success"
+                  data-tip={user?.displayName}
+                >
                   <img
                     style={{
                       height: "50px",
@@ -96,7 +99,6 @@ const Header = () => {
                     }}
                     className={` inline-block  `}
                     src={user?.photoURL}
-                    title={user?.displayName}
                     alt=""
                   />
                 </div>

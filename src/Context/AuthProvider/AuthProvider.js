@@ -21,7 +21,6 @@ const AuthProvider = ({ children }) => {
   };
   // github singIn
   const githubSignIn = (provider) => {
-    setLoading(true);
     return signInWithPopup(auth, provider);
   };
   // user management
